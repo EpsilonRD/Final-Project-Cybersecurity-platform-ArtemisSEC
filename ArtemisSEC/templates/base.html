@@ -1,0 +1,52 @@
+{% load static %}  <!-- Load static content of  Django -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtemisSEC</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">  
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="/" class="logo">ArtemisSEC</a> <!-- Logo -->
+    
+    <div class="navbar-container">
+        <ul class="navbar-links">
+            <li><a href="{% url 'home' %}" class="nav-link">HOME</a></li>
+            <li><a href="{% url 'scan_now' %}" class="nav-link">SCAN NOW</a></li>
+            <li><a href="{% url 'news' %}" class="nav-link">NEWS</a></li>
+        </ul>
+        
+        <!-- Show user authentication -->
+<!-- Show user authentication -->
+<div style="margin-left: auto;"> <!-- Este div ayuda a empujar los elementos a la derecha -->
+    {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="nav-login logout-btn">Logout ({{ user.username }})</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}" class="nav-login">Log in</a>
+    {% endif %}
+</div>
+    </div>
+</nav>
+
+<!--Web content-->
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

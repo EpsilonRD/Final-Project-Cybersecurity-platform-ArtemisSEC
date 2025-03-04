@@ -1,0 +1,9 @@
+<!-- authentication/templates/authentication/welcome.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="welcome-container">
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p>You have successfully logged in.</p>
+</div>
+{% endblock %}
