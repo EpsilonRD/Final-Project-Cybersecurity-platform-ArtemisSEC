@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: roboto,sans-serif;
+}
+
+/*navbar style*/
+
+.navbar {
+    background-color: #5e17eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vh 2vw;
+    width: 100%;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 4vh;
+    font-family: Poppins, sans-serif;
+    margin-right: 2vw;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    flex-grow: 1;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.nav-link, .nav-login {
+    color: aliceblue;
+    text-decoration: none;
+    font-family: Roboto, sans-serif;
+    font-size: 2.3vh;
+    padding: 1vh;
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+}
+
+.nav-link:hover{
+    transition: 0.2ms;
+    background-color: #cb6ce6;
+    border-radius: 1vh;
+
+}
+
+.nav-login:hover {
+    background-color: yellowgreen;
+    color: black;
+    border-radius: 1vh; 
+    font-weight: bold; 
+    transition: 0.2ms;
+}
+
+.logout-btn{
+    transition: 0.2ms;
+    border-radius: 1vh;
+}
+
+.logout-btn:hover{
+    background-color: red;
+}
+.navbar-container > div {
+    margin-left: auto; 
+}
+
+
+/*Form styles */
+
+.login-container {
+    width: 90vw; /* Ocupa el 90% del ancho de la pantalla */
+    max-width: 400px; /* No será más grande que 400px */
+    padding: 3vh; /* Padding consistente */
+    background-color: #ffffff;
+    border-radius: 2vh;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+/* Estilos para los campos del formulario */
+.login-container input {
+    width: 100%;
+    padding: 1.5vh; 
+    margin: 1vh 0;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    font-size: 2vh; 
+}
+
+/* Estilo para el botón */
+.login-container button {
+    width: 100%;
+    padding: 1.5vh;
+    background-color: #5e17eb;
+    color: white;
+    border: none;
+    border-radius: 1vh;
+    font-size:2vh; 
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #cb6ce6;
+}
+
+/* Estilo para el texto y el enlace */
+.login-container p {
+    margin-top: 2vh;
+    font-size: 1.8vh; 
+}
+
+.login-container a {
+    color: #5e17eb;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.8vh; 
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90vw; 
+        max-width: 60%; 
+        padding: 5vh; 
+    }
+
+    .login-container input,
+    .login-container button {
+        font-size: 2vh; 
+    }
+
+    .login-container p,
+    .login-container a {
+        font-size: 1.5vh; 
+    }
+}
+
+
+
+/* Estilos generales para el registro */
+.register-container {
+    margin-top: 12vh;
+    width: 90vw; /* Ocupa el 90% del ancho de la pantalla */
+    max-width: 400px; /* No será más grande que 400px */
+    padding: 3vh;
+    background-color: #ffffff;
+    border-radius: 2vh;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Estilos para los campos del formulario */
+.register-container input {
+    width: 100%;
+    padding: 1.5vh;
+    margin: 1vh 0;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    font-size: 2vh;
+}
+
+/* Estilo para el botón */
+.register-container button {
+    width: 100%;
+    padding: 1.5vh;
+    background-color: #5e17eb;
+    color: white;
+    border: none;
+    border-radius: 1vh;
+    font-size: 2vh;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.register-container button:hover {
+    background-color: #5271ff;
+}
+
+/* Estilo para el texto y el enlace */
+.register-container p {
+    margin-top: 2vh;
+    font-size: 1.8vh;
+}
+
+.register-container a {
+    color: #5e17eb;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.8vh;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+/* Estilos para Academic Level */
+.register-container select {
+    width: 100%;
+    padding: 1.5vh;
+    margin: 1vh 0;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    font-size: 2vh;
+    background-color: white;
+    color: #333;
+    appearance: none; /* Oculta el diseño por defecto del sistema */
+    cursor: pointer;
+}
+
+/* Flecha personalizada para select */
+.register-container select:focus {
+    border-color: #333;
+    outline: none;
+}
+
+/* Ajuste para mejorar la accesibilidad */
+.register-container label {
+    display: block;
+    font-size: 2vh;
+    margin-bottom: 0.5vh;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .register-container {
+        width: 90vw;
+        max-width: 90%; /* Ajusta mejor en móviles */
+        padding: 5vw;
+        margin-top: 12vh;
+    }
+
+    .register-container input,
+    .register-container button {
+        font-size: 2.5vh; /* Hace que el texto sea más grande en móviles */
+    }
+}
