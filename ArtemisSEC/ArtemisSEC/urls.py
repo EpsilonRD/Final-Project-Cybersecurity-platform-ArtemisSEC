@@ -24,7 +24,7 @@ def placeholder_view(request):
     return HttpResponse("Web site underconstruction")
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('authentication.urls')),  # Incluye las URLs de la app de autenticación
+    path('auth/', include('authentication.urls')),  # Authentication App Urls 
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),  #  logout
     path('home/', placeholder_view, name="home"), #home url
     path('scan-now/', placeholder_view, name="scan_now"), #scan now url

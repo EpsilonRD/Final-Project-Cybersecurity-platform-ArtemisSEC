@@ -1,4 +1,4 @@
-{% load static %}  <!-- Load static content of  Django -->
+{% load static %}  <!-- Load static content of Django -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +13,10 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">  
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">  
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -28,25 +32,40 @@
         </ul>
         
         <!-- Show user authentication -->
-<!-- Show user authentication -->
-<div style="margin-left: auto;"> <!-- Este div ayuda a empujar los elementos a la derecha -->
-    {% if user.is_authenticated %}
-        <form action="{% url 'logout' %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" class="nav-login logout-btn">Logout ({{ user.username }})</button>
-        </form>
-    {% else %}
-        <a href="{% url 'login' %}" class="nav-login">Log in</a>
-    {% endif %}
-</div>
+        <div class="auth-container">
+            {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="userDropdown">
+                        <i class="bi bi-person-circle"></i> 
+                        <span>{{ user.username }}</span>
+                    </a>
+                    <ul class="dropdown-menu" id="dropdownMenu">
+                        <li><a class="dropdown-item" href="{% url 'change-password' %}">🔒Change Password</a></li>
+                        <li><a class="dropdown-item" href="{% url 'profile-settings' %}">⚙️ Profile Settings</a></li>
+                        <li>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="dropdown-item  logout-button">🚪Logout</button>
+                            </form>
+                        </li>
+
+                    </ul>
+                </div>
+            {% else %}
+                <a href="{% url 'login' %}" class="nav-login">Log in</a>
+            {% endif %}
+        </div>
     </div>
 </nav>
 
-<!--Web content-->
+<!-- Web content -->
 <div class="content">
     {% block content %}
     {% endblock %}
 </div>
+
+<!-- JavaScript -->
+<script src="{% static 'js/navbar.js' %}"></script>
 
 </body>
 </html>

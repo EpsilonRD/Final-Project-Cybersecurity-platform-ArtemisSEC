@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/profile_settings.css' %}"> 
+<div class="profile-settings-container">
+    <h2>Edit Your Profile</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            {{ form.as_p }} 
+        </div>
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <hr>
+    <a href="{% url 'change-password' %}">Change Password</a>
+</div>
+{% endblock %}

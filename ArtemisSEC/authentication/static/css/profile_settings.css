@@ -1,0 +1,124 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+}
+
+/*Main Container  */
+.profile-settings-container {
+    width: 90vw; 
+    max-width: 400px; 
+    padding: 3vh;
+    background-color: #ffffff;
+    border-radius: 2vh;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative; 
+    margin-top: 5vh; 
+    margin-bottom: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 1; 
+    overflow-y: auto; 
+}
+
+
+.profile-settings-container h2 {
+    margin-bottom: 2vh;
+    font-size: 2.5vh;
+    color: #333;
+}
+
+/* Form Styles */
+.profile-settings-container form {
+    width: 100%;
+    margin-bottom: 2vh;
+}
+
+.profile-settings-container label {
+    display: block;
+    font-size: 1.8vh;
+    margin-top: 1.5vh;
+    font-weight: bold;
+    text-align: left;
+}
+
+
+.profile-settings-container input {
+    width: 100%;
+    padding: 1.5vh;
+    margin-top: 0.5vh;
+    border: 1px solid #ccc;
+    border-radius: 1vh;
+    font-size: 2vh;
+}
+
+
+.profile-settings-container button {
+    width: 100%;
+    padding: 1.5vh;
+    background-color: #5e17eb;
+    color: white;
+    border: none;
+    border-radius: 1vh;
+    font-size: 2vh;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 2vh;
+}
+
+.profile-settings-container button:hover {
+    background-color: #cb6ce6;
+}
+
+
+.profile-settings-container a {
+    font-size: 1.8vh;
+    color: #5e17eb;
+    text-decoration: none;
+}
+
+.profile-settings-container a:hover {
+    text-decoration: underline;
+}
+
+
+.profile-settings-container .helptext {
+    color: #333;
+    border-radius: 1vh;
+    padding: 0.2vh;
+    margin-top: 4vh;
+    font-size: 1.6vh;
+    font-weight: normal;
+    text-align: left; 
+}
+
+.profile-settings-container .helptext.required-error {
+    color: #4caf50; 
+    background-color: #e8f5e9; 
+    border: 1px solid #81c784; 
+    font-weight: normal;
+}
+
+
+@media (max-width: 768px) {
+    .profile-settings-container {
+        width: 90vw;
+        max-width: 60%;
+        padding: 5vh;
+    }
+
+    .profile-settings-container input,
+    .profile-settings-container button {
+        font-size: 2vh;
+    }
+
+    .profile-settings-container a {
+        font-size: 2vh;
+    }
+}
+
+
+
