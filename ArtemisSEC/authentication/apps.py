@@ -6,4 +6,4 @@ class AuthenticationConfig(AppConfig):
     name = 'authentication'
 
     def ready(self):
-        import authentication.signals  # Conecta las señales al iniciar la app
+        import authentication.signals  # connect the signals 

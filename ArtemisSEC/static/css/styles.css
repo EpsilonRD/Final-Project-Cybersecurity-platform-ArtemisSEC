@@ -5,87 +5,13 @@
     font-family: roboto,sans-serif;
 }
 
-/*navbar style*/
-
-.navbar {
-    background-color: #5e17eb;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1vh 2vw;
-    width: 100%;
-}
-
-.logo {
-    color: white;
-    text-decoration: none;
-    font-size: 4vh;
-    font-family: Poppins, sans-serif;
-    margin-right: 2vw;
-}
-
-.navbar-container {
-    display: flex;
-    align-items: center;
-    gap: 2vw;
-    flex-grow: 1;
-}
-
-.navbar-links {
-    display: flex;
-    align-items: center;
-    gap: 1vw;
-}
-
-.navbar-links li {
-    list-style: none;
-}
-
-.nav-link, .nav-login {
-    color: aliceblue;
-    text-decoration: none;
-    font-family: Roboto, sans-serif;
-    font-size: 2.3vh;
-    padding: 1vh;
-    border: none; 
-    background: none; 
-    cursor: pointer; 
-}
-
-.nav-link:hover{
-    transition: 0.2ms;
-    background-color: #cb6ce6;
-    border-radius: 1vh;
-
-}
-
-.nav-login:hover {
-    background-color: yellowgreen;
-    color: black;
-    border-radius: 1vh; 
-    font-weight: bold; 
-    transition: 0.2ms;
-}
-
-.logout-btn{
-    transition: 0.2ms;
-    border-radius: 1vh;
-}
-
-.logout-btn:hover{
-    background-color: red;
-}
-.navbar-container > div {
-    margin-left: auto; 
-}
-
 
 /*Form styles */
 
 .login-container {
-    width: 90vw; /* Ocupa el 90% del ancho de la pantalla */
-    max-width: 400px; /* No será más grande que 400px */
-    padding: 3vh; /* Padding consistente */
+    width: 90vw; 
+    max-width: 400px; 
+    padding: 3vh; 
     background-color: #ffffff;
     border-radius: 2vh;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -97,7 +23,7 @@
     
 }
 
-/* Estilos para los campos del formulario */
+/* Styles for the login forms */
 .login-container input {
     width: 100%;
     padding: 1.5vh; 
@@ -107,7 +33,7 @@
     font-size: 2vh; 
 }
 
-/* Estilo para el botón */
+/* Styles for the login button  */
 .login-container button {
     width: 100%;
     padding: 1.5vh;
@@ -124,7 +50,6 @@
     background-color: #cb6ce6;
 }
 
-/* Estilo para el texto y el enlace */
 .login-container p {
     margin-top: 2vh;
     font-size: 1.8vh; 
@@ -141,7 +66,8 @@
     text-decoration: underline;
 }
 
-/* Diseño responsivo */
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .login-container {
         width: 90vw; 
@@ -161,12 +87,11 @@
 }
 
 
-
-/* Estilos generales para el registro */
+/* General Styles for Register forms */
 .register-container {
     margin-top: 12vh;
-    width: 90vw; /* Ocupa el 90% del ancho de la pantalla */
-    max-width: 400px; /* No será más grande que 400px */
+    width: 90vw; 
+    max-width: 400px;
     padding: 3vh;
     background-color: #ffffff;
     border-radius: 2vh;
@@ -178,7 +103,6 @@
     transform: translate(-50%, -50%);
 }
 
-/* Estilos para los campos del formulario */
 .register-container input {
     width: 100%;
     padding: 1.5vh;
@@ -188,7 +112,6 @@
     font-size: 2vh;
 }
 
-/* Estilo para el botón */
 .register-container button {
     width: 100%;
     padding: 1.5vh;
@@ -205,7 +128,6 @@
     background-color: #5271ff;
 }
 
-/* Estilo para el texto y el enlace */
 .register-container p {
     margin-top: 2vh;
     font-size: 1.8vh;
@@ -221,7 +143,6 @@
 .register-container a:hover {
     text-decoration: underline;
 }
-/* Estilos para Academic Level */
 .register-container select {
     width: 100%;
     padding: 1.5vh;
@@ -231,34 +152,46 @@
     font-size: 2vh;
     background-color: white;
     color: #333;
-    appearance: none; /* Oculta el diseño por defecto del sistema */
+    appearance: none; 
     cursor: pointer;
 }
 
-/* Flecha personalizada para select */
 .register-container select:focus {
     border-color: #333;
     outline: none;
 }
 
-/* Ajuste para mejorar la accesibilidad */
 .register-container label {
     display: block;
     font-size: 2vh;
     margin-bottom: 0.5vh;
 }
 
-/* Diseño responsivo */
+/* Responsive Desing  */
 @media (max-width: 768px) {
     .register-container {
         width: 90vw;
-        max-width: 90%; /* Ajusta mejor en móviles */
+        max-width: 90%;
         padding: 5vw;
         margin-top: 12vh;
     }
 
     .register-container input,
     .register-container button {
-        font-size: 2.5vh; /* Hace que el texto sea más grande en móviles */
+        font-size: 2.5vh;
     }
+}
+
+/* Auth container */
+.auth-container {
+    margin-left: auto;
+}
+
+.logout-form {
+    display: inline;
+}
+
+/*Error Text */
+.error{
+    color: red;
 }
