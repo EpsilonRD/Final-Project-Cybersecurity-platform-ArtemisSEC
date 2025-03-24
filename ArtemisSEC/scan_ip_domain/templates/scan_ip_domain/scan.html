@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'scan_ip_domain/css/scan_ip_domain.css' %}?v=4">
+{% endblock %}
+
+{% block content %}
+<div class="scan-ip-domain-container">
+    <!-- HISTORY PANEL -->
+    <div class="history-panel">
+        <h2>Scan History</h2>
+        <div id="history-list" data-url="{% url 'scan_ip_domain_history' %}">
+            <p>Loading history...</p>
+        </div>
+    </div>
+
+    <!--MAIN CONTAINER-->
+    <div class="main-content">
+        <div class="search-section">
+            <h1>Scan IP or Domain</h1>
+            <form id="scan-form" data-url="{% url 'scan_ip_domain' %}">
+                {% csrf_token %}
+                <input type="text" name="target" class="search-input" placeholder="Enter IP or Domain" required>
+                <button type="submit" class="search-btn">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        </div>
+        <div id="scan-results"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'scan_ip_domain/js/scan_ip_domain.js' %}"></script>
+{% endblock %}

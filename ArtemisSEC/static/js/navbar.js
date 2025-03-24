@@ -1,18 +1,36 @@
-//Dropdown Menu Script 
-document.addEventListener("DOMContentLoaded", function () {
-    const userDropdown = document.getElementById("userDropdown");
-    const dropdownMenu = document.getElementById("dropdownMenu");
+document.addEventListener('DOMContentLoaded', function () {
+    // Dropdown for user 
+    const userDropdown = document.getElementById('userDropdown');
+    const userDropdownMenu = document.getElementById('dropdownMenu');
 
-    if (userDropdown) {
-        userDropdown.addEventListener("click", function (event) {
-            event.preventDefault();
-            dropdownMenu.classList.toggle("show");
+    if (userDropdown && userDropdownMenu) {
+        userDropdown.addEventListener('click', function (e) {
+            e.preventDefault();
+            userDropdownMenu.style.display = userDropdownMenu.style.display === 'block' ? 'none' : 'block';
         });
 
-        // Cerrar el menú si el usuario hace clic fuera
-        window.addEventListener("click", function (event) {
-            if (!userDropdown.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.classList.remove("show");
+        // close whe click out 
+        document.addEventListener('click', function (e) {
+            if (!userDropdown.contains(e.target) && !userDropdownMenu.contains(e.target)) {
+                userDropdownMenu.style.display = 'none';
+            }
+        });
+    }
+
+    // Dropdown de Scan Now
+    const scanDropdown = document.getElementById('scanDropdown');
+    const scanDropdownMenu = document.getElementById('scanDropdownMenu');
+
+    if (scanDropdown && scanDropdownMenu) {
+        scanDropdown.addEventListener('click', function (e) {
+            e.preventDefault();
+            scanDropdownMenu.style.display = scanDropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // close when click out 
+        document.addEventListener('click', function (e) {
+            if (!scanDropdown.contains(e.target) && !scanDropdownMenu.contains(e.target)) {
+                scanDropdownMenu.style.display = 'none';
             }
         });
     }

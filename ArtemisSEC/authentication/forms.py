@@ -26,7 +26,7 @@ class CustomUserCreationForm(UserCreationForm):
 from django.contrib.auth.forms import PasswordChangeForm
 
 class PasswordChangeFormCustom(PasswordChangeForm):
-    # This class is for modified the form of change password if need it .
+    # This class it will be for modified the form of change password if need it .
     pass
 
 

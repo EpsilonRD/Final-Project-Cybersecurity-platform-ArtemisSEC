@@ -1,124 +1,148 @@
-
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
-/*Main Container  */
+/* Main Container */
 .profile-settings-container {
-    width: 90vw; 
-    max-width: 400px; 
-    padding: 3vh;
-    background-color: #ffffff;
-    border-radius: 2vh;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 90vw;
+    max-width: 400px;
+    padding: 20px; 
+    background-color: #16213e; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-    position: relative; 
-    margin-top: 5vh; 
-    margin-bottom: 5vh;
-    margin-left: auto;
-    margin-right: auto;
-    flex-grow: 1; 
-    overflow-y: auto; 
+    position: absolute; 
+    top: 0; 
+    left: 50%;
+    transform: translate(-50%, 0); 
+    margin-top: 120px; 
+    transition: transform 0.3s ease; 
 }
 
+/* Hover effect */
+.profile-settings-container:hover {
+    transform: translate(-50%, -2%); 
+}
 
+/* Tittle */
 .profile-settings-container h2 {
-    margin-bottom: 2vh;
-    font-size: 2.5vh;
-    color: #333;
+    color: #00b3b3; 
+    font-size: 26px; 
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Form Styles */
 .profile-settings-container form {
     width: 100%;
-    margin-bottom: 2vh;
 }
 
+/* Labels Styles */
 .profile-settings-container label {
     display: block;
-    font-size: 1.8vh;
-    margin-top: 1.5vh;
-    font-weight: bold;
+    font-size: 14px; 
+    margin-top: 10px;
+    margin-bottom: 4px;
+    color: #e0e0e0; 
     text-align: left;
 }
 
-
+/* Inputs Styles */
 .profile-settings-container input {
     width: 100%;
-    padding: 1.5vh;
-    margin-top: 0.5vh;
-    border: 1px solid #ccc;
-    border-radius: 1vh;
-    font-size: 2vh;
+    padding: 10px; 
+    margin: 6px 0; 
+    border: 1px solid #0f3460; 
+    border-radius: 5px;
+    font-size: 16px; 
+    background-color: #1a1a2e; 
+    color: #e0e0e0; 
+    transition: border-color 0.3s ease;
 }
 
+.profile-settings-container input:focus {
+    border-color: #00b3b3; 
+    outline: none;
+}
 
+/* Button Styles */
 .profile-settings-container button {
     width: 100%;
-    padding: 1.5vh;
-    background-color: #5e17eb;
-    color: white;
+    padding: 10px; 
+    background-color: #00b3b3; 
+    color: #1a1a2e; 
     border: none;
-    border-radius: 1vh;
-    font-size: 2vh;
+    border-radius: 5px;
+    font-size: 16px; 
     cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 2vh;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 179, 179, 0.3);
+    margin-top: 10px; 
 }
 
 .profile-settings-container button:hover {
-    background-color: #cb6ce6;
+    background-color: #ff2e63; 
+    transform: scale(1.05);
 }
 
-
+/* Link Styles */
 .profile-settings-container a {
-    font-size: 1.8vh;
-    color: #5e17eb;
+    font-size: 14px; 
+    color: #00b3b3; 
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .profile-settings-container a:hover {
+    color: #ff2e63; 
     text-decoration: underline;
 }
 
-
+/* Helptext Styles */
 .profile-settings-container .helptext {
-    color: #333;
-    border-radius: 1vh;
-    padding: 0.2vh;
-    margin-top: 4vh;
-    font-size: 1.6vh;
-    font-weight: normal;
-    text-align: left; 
+    color: #e0e0e0; 
+    font-size: 12px; 
+    margin-top: 5px;
+    text-align: left;
 }
 
-.profile-settings-container .helptext.required-error {
-    color: #4caf50; 
-    background-color: #e8f5e9; 
-    border: 1px solid #81c784; 
-    font-weight: normal;
+/* HR Styles */
+.profile-settings-container hr {
+    border: 0;
+    height: 1px;
+    background: #0f3460; 
+    margin: 15px 0;
 }
 
-
+/* Responsive Styles */
 @media (max-width: 768px) {
     .profile-settings-container {
         width: 90vw;
-        max-width: 60%;
-        padding: 5vh;
+        max-width: 90%; 
+        padding: 15px;
+        margin-top: 100px; 
+    }
+
+    .profile-settings-container h2 {
+        font-size: 22px;
     }
 
     .profile-settings-container input,
     .profile-settings-container button {
-        font-size: 2vh;
+        font-size: 14px;
     }
 
+    .profile-settings-container label,
     .profile-settings-container a {
-        font-size: 2vh;
+        font-size: 12px;
+    }
+
+    .profile-settings-container .helptext {
+        font-size: 10px;
     }
 }
-
-
-

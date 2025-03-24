@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/scanner.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="scanner-container">
+    <!-- History Panel -->
+    <div class="history-panel">
+        <h2>Scan History</h2>
+        <div id="history-list">
+            <p>Loading history...</p>
+        </div>
+    </div>
+
+    <!-- Main container-->
+    <div class="main-content">
+        <h1>File Scanner</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="file" id="fileInput" required>
+            <button type="submit" class="btn">Scan File</button>
+        </form>
+        <div id="result"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/scanner.js' %}" defer></script>
+    <script src="{% static 'js/styles.js' %}" defer></script>
+{% endblock %}

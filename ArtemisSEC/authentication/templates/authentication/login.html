@@ -2,23 +2,38 @@
 
 {% block content %}
 <div class="login-container">
-    <h1>Login</h1>
+    <h2>Login</h2>
+
     <form method="POST">
         {% csrf_token %}
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
+        <input type="text" name="username" id="username" value="{{ form.username.value|default:'' }}" required>
 
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" required>
 
-        <button type="submit">Login</button>
+        <!-- Error Messages for specific fields -->
+        {% if form.username.errors %}
+            <p class="error">{{ form.username.errors|join:", " }}</p>
+        {% endif %}
+        {% if form.password.errors %}
+            <p class="error">{{ form.password.errors|join:", " }}</p>
+        {% endif %}
 
+        <!-- Display success or error messages -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p class="{% if message.tags == 'error' %}error{% else %}success{% endif %}">
+                        {{ message }}
+                    </p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <button type="submit">Login</button>
     </form>
-    {% if form.errors %}
-    <div class="error-messages">
-        <p class="error">Invalid username or password. Please try again.</p>
-    </div>
-{% endif %}
+
     <p>Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
 </div>
 {% endblock %}

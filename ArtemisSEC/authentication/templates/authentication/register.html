@@ -3,35 +3,36 @@
 {% block content %}
 <div class="register-container">
     <h2>Register</h2>
+
     <form method="POST">
         {% csrf_token %}
         
         <!-- Username -->
         <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
+        <input type="text" name="username" id="username" value="{{ form.username.value|default:'' }}" required>
 
         <!-- Email -->
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
+        <input type="email" name="email" id="email" value="{{ form.email.value|default:'' }}" required>
 
         <!-- First Name -->
         <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" id="first_name" required>
+        <input type="text" name="first_name" id="first_name" value="{{ form.first_name.value|default:'' }}" required>
 
         <!-- Last Name -->
         <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" id="last_name" required>
+        <input type="text" name="last_name" id="last_name" value="{{ form.last_name.value|default:'' }}" required>
 
         <!-- Date of Birth -->
         <label for="birth_date">Date of Birth:</label>
-        <input type="date" name="birth_date" id="birth_date" required>
+        <input type="date" name="birth_date" id="birth_date" value="{{ form.birth_date.value|default:'' }}" required>
 
         <!-- Academic Level -->
         <label for="academic_level">Academic Level:</label>
         <select name="academic_level" id="academic_level" required>
-            <option value="student">Student</option>
-            <option value="professional">Professional</option>
-            <option value="other">Other</option>
+            <option value="student" {% if form.academic_level.value == 'student' %}selected{% endif %}>Student</option>
+            <option value="professional" {% if form.academic_level.value == 'professional' %}selected{% endif %}>Professional</option>
+            <option value="other" {% if form.academic_level.value == 'other' %}selected{% endif %}>Other</option>
         </select>
 
         <!-- Password -->
@@ -41,6 +42,43 @@
         <!-- Confirm Password -->
         <label for="password2">Confirm Password:</label>
         <input type="password" name="password2" id="password2" required>
+
+        <!-- Error Messages for specific fields -->
+        {% if form.username.errors %}
+            <p class="error">{{ form.username.errors|join:", " }}</p>
+        {% endif %}
+        {% if form.email.errors %}
+            <p class="error">{{ form.email.errors|join:", " }}</p>
+        {% endif %}
+        {% if form.first_name.errors %}
+            <p class="error">{{ form.first_name.errors|join:", " }}</p>
+        {% endif %}
+        {% if form.last_name.errors %}
+            <p class="error">{{ form.last_name.errors|join:", " }}</p>
+        {% endif %}
+        {% if form.birth_date.errors %}
+            <p class="error">{{ form.birth_date.errors|join:", " }}</p>
+        {% endif %}
+        {% if form.academic_level.errors %}
+            <p class="error">{{ form.academic_level.errors|join:", " }}</p>
+        {% endif %}
+        {% if form.password1.errors %}
+            <p class="error">{{ form.password1.errors|join:", " }}</p>
+        {% endif %}
+        {% if form.password2.errors %}
+            <p class="error">{{ form.password2.errors|join:", " }}</p>
+        {% endif %}
+
+        <!-- Display success or error messages -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p class="{% if message.tags == 'error' %}error{% else %}success{% endif %}">
+                        {{ message }}
+                    </p>
+                {% endfor %}
+            </div>
+        {% endif %}
 
         <button type="submit">Register</button>
     </form>

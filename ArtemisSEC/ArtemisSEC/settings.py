@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv(os.path.join(BASE_DIR, ".env")) #API 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -38,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites', #Django.contrib.sites
-    'authentication' #Authentication App 
+    'authentication',#Authentication App 
+    'scanner.apps.ScannerConfig', # Scanner App 
+    'scan_ip_domain', #Scan Ip domain APP 
 ]
 
 MIDDLEWARE = [
@@ -122,6 +126,8 @@ STATIC_URL = '/static/'
 #path of the static files
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # O la ruta que tengas configurada
+    #BASE_DIR / "scanner/static",   # Carpeta static/ de la app scanner
+    #BASE_DIR / "scan_ip_domain/static",
 ]
 
 # Default primary key field type
@@ -135,3 +141,9 @@ SITE_ID = 1
 LOGIN_URL = 'login'
 
 AUTH_USER_MODEL = 'authentication.CustomUser'
+
+
+#Accesing to the API KEYS 
+
+VIRUSTOTAL_API_KEY = os.getenv("Scanner_app_key")
+ABUSEIPDB_API_KEY = os.getenv("scan_ip_domain_key")

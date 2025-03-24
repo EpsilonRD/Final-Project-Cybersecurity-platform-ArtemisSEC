@@ -17,19 +17,28 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class RegisterView(CreateView):
     template_name = 'authentication/register.html'
-    form_class = CustomUserCreationForm  # Custom Form 
-    success_url = reverse_lazy('login')  # Rediret to login view after register 
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('login')
 
     def form_valid(self, form):
-        # Save new User 
         response = super().form_valid(form)
-        messages.success(self.request, "Successful registration! Now you can log in.")
-        return response 
+        messages.success(self.request, "Registration successful! You can now log in.")
+        return response
 
-# Generic login view using  LoginView
+    def form_invalid(self, form):
+        if 'password2' in form.errors:
+            messages.error(self.request, "Passwords do not match. Please check them.")
+        elif 'username' in form.errors:
+            messages.error(self.request, "The username is already taken or invalid.")
+        elif 'email' in form.errors:
+            messages.error(self.request, "The email is already in use or invalid.")
+        else:
+            messages.error(self.request, "Please correct the errors in the form.")
+        return super().form_invalid(form)
+
 class UserLoginView(LoginView):
     template_name = 'authentication/login.html'
-    success_url = reverse_lazy('welcome')  # Welcome Website after Login 
+    success_url = reverse_lazy('welcome')
 
     def form_invalid(self, form):
         messages.error(self.request, "Invalid username or password. Please try again.")
@@ -41,42 +50,45 @@ class UserLoginView(LoginView):
 class WelcomeView(TemplateView):
     template_name = 'authentication/welcome.html'
 
-# When user login 
 @receiver(user_logged_in)
 def update_last_login(sender, request, user, **kwargs):
     user.last_login = now()
     user.save()
 
-# When user close section 
 @receiver(user_logged_out)
 def update_last_logout(sender, request, user, **kwargs):
     user.last_login = None  
     user.save()
 
-
-# View to edit the profile 
 class ProfileSettingsView(LoginRequiredMixin, UpdateView):
     model = CustomUser
     form_class = CustomUserChangeForm
     template_name = 'authentication/profile_settings.html'
-    success_url = reverse_lazy('profile-settings')  # Redirect to after change 
+    success_url = reverse_lazy('profile-settings')
 
     def get_object(self):
-        # Return the user who is doing the Request 
         return self.request.user
 
     def form_valid(self, form):
-        # If form is valid save susscefully 
         messages.success(self.request, 'Your profile has been updated successfully!')
         return super().form_valid(form)
 
-# View to change password 
 class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
     template_name = 'authentication/change_password.html'
     success_url = reverse_lazy('profile-settings')
+    form_class = PasswordChangeForm  # Usamos el formulario por defecto de Django
 
     def form_valid(self, form):
-        # When password is changed still keep user section Note: This policy might be changed in the future
         update_session_auth_hash(self.request, form.user)
         messages.success(self.request, 'Your password has been updated successfully!')
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        """Show forms errors"""
+        if 'old_password' in form.errors:
+            messages.error(self.request, "The current password is incorrect.")
+        elif 'new_password2' in form.errors:
+            messages.error(self.request, "The new passwords do not match or do not meet the requirements.")
+        else:
+            messages.error(self.request, "Please correct the errors in the form.")
+        return super().form_invalid(form)
