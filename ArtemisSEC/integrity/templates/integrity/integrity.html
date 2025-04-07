@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/integrity.css' %}?v=1">
+{% endblock %}
+
+{% block content %}
+<div class="integrity-container">
+    <!-- History Panel -->
+    <div class="history-panel">
+        <h2>Integrity History</h2>
+        <div id="history-list" data-url="{% url 'integrity:integrity_history' %}">
+            <p>Loading history...</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="check-section">
+            <h1>Check File Integrity</h1>
+            <form method="POST" enctype="multipart/form-data" class="integrity-form">
+                {% csrf_token %}
+                <div>
+                    <label for="file">Select a file:</label>
+                    <input type="file" id="file" name="file" required>
+                </div>
+
+                <div>
+                    <label for="reference_hash">Enter reference hash:</label>
+                    <input type="text" id="reference_hash" name="reference_hash" required placeholder="e.g., MD5, SHA-1, SHA-256, etc.">
+                </div>
+
+                <div>
+                    <label for="algorithm">Select algorithm:</label>
+                    <select id="algorithm" name="algorithm">
+                        <option value="md5">MD5</option>
+                        <option value="sha1">SHA-1</option>
+                        <option value="sha256" selected>SHA-256</option>
+                        <option value="sha384">SHA-384</option>
+                        <option value="sha512">SHA-512</option>
+                    </select>
+                </div>
+
+                <button type="submit">Verify</button>
+            </form>
+        </div>
+
+        {% if result %}
+            <div id="integrity-results" class="result-container visible">
+                <div class="result-details">
+                    <h3>Result:</h3>
+                    <pre>{{ result }}</pre>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/integrity.js' %}"></script>
+{% endblock %}

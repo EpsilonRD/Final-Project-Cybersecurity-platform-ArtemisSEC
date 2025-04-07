@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'authentication',#Authentication App 
     'scanner.apps.ScannerConfig', # Scanner App 
     'scan_ip_domain', #Scan Ip domain APP 
+    'integrity.apps.IntegrityConfig', #Scan Integrity of the files
+    'news.apps.NewsConfig',  # News App 
 ]
 
 MIDDLEWARE = [
@@ -147,3 +149,9 @@ AUTH_USER_MODEL = 'authentication.CustomUser'
 
 VIRUSTOTAL_API_KEY = os.getenv("Scanner_app_key")
 ABUSEIPDB_API_KEY = os.getenv("scan_ip_domain_key")
+
+#Media 
+
+# Al final del archivo
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

@@ -32,7 +32,7 @@
                 <ul class="dropdown-menu" id="scanDropdownMenu">
                     <li><a class="dropdown-item" href="/scanner/">Scan File</a></li>
                     <li><a class="dropdown-item" href="/scan-ip-domain/">Scan IP and Domain</a></li>
-                    <li><a class="dropdown-item" href="#">Check Integrity</a></li>
+                    <li><a class="dropdown-item" href="/integrity/">Check Integrity</a></li>
                 </ul>
             </li>
             <li><a href="/news/" class="nav-link">NEWS</a></li>
@@ -41,7 +41,7 @@
             <div class="dropdown">
                 <a href="#" class="nav-link dropdown-toggle" id="userDropdown">
                     <i class="bi bi-person-circle"></i> 
-                    <span>admin</span>
+                    <span>{{ user.username }}</span>
                 </a>
                 <ul class="dropdown-menu" id="dropdownMenu">
                     <li><a class="dropdown-item" href="/auth/change-password/"><i class="bi bi-lock-fill"></i> Change Password</a></li>

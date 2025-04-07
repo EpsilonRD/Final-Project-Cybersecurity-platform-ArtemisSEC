@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="create-news-container">
+        <div class="history-panel">
+            <h2>Your Posts</h2>
+            {% for news in user_news %}
+                <div class="history-item">
+                    <p>{{ news.title }}</p>
+                    <small>{{ news.created_at|date:"d M Y H:i" }}</small>
+                    <a href="#" class="edit-link" data-id="{{ news.pk }}">Edit</a>
+                    <a href="#" class="delete-link" data-id="{{ news.pk }}">Delete</a>
+                </div>
+            {% empty %}
+                <p class="no-posts">No posts yet.</p>
+            {% endfor %}
+        </div>
+        <div class="create-news-main">
+            <div class="create-news-box">
+                <h1>Create New Post</h1>
+                <form method="post" enctype="multipart/form-data" class="news-form" id="news-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="news_id" id="news-id">
+                    <div class="form-group">
+                        {{ form.title.label_tag }}
+                        {{ form.title }}
+                        {% if form.title.errors %}
+                            <span class="form-error">{{ form.title.errors }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.content.label_tag }}
+                        <div class="formatting-toolbar">
+                            <button type="button" class="format-btn" data-action="bold" title="Bold"><i class="bi bi-type-bold"></i></button>
+                            <button type="button" class="format-btn" data-action="italic" title="Italic"><i class="bi bi-type-italic"></i></button>
+                            <button type="button" class="format-btn" data-action="bullet" title="Bulleted List"><i class="bi bi-list-ul"></i></button>
+                            <button type="button" class="format-btn" data-action="number" title="Numbered List"><i class="bi bi-list-ol"></i></button>
+                        </div>
+                        <div class="content-editor" contenteditable="true" id="content-editor">{{ form.content.value|default:'' }}</div>
+                        {{ form.content }}
+                        {% if form.content.errors %}
+                            <span class="form-error">{{ form.content.errors }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.image.label_tag }}
+                        {{ form.image }}
+                        {% if form.image.errors %}
+                            <span class="form-error">{{ form.image.errors }}</span>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-submit">
+                        <i class="bi bi-upload"></i> <span id="submit-text">Publish</span>
+                    </button>
+                </form>
+                <a href="{% url 'home' %}" class="btn btn-cancel">
+                    <i class="bi bi-x-circle"></i> Cancel
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/create_news.js' %}"></script>
+{% endblock %}

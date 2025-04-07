@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="news-detail-container">
+        <div class="news-detail-box">
+            <h1>{{ news.title }}</h1>
+            <div class="news-detail-header">
+                {% if news.image %}
+                    <img src="{{ news.image.url }}" alt="{{ news.title }}" class="news-detail-image">
+                {% else %}
+                    <div class="news-detail-placeholder">No Image</div>
+                {% endif %}
+                <p class="news-meta">
+                    <i class="bi bi-person"></i> {{ news.author.username }} | 
+                    <i class="bi bi-calendar"></i> {{ news.created_at|date:"d M Y H:i" }}
+                </p>
+            </div>
+            <div class="news-detail-content">
+                <p>{{ news.content|linebreaks }}</p>
+            </div>
+            <a href="{% url 'home' %}" class="btn btn-back">
+                <i class="bi bi-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}

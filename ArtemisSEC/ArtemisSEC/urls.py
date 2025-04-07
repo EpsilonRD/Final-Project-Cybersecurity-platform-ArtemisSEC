@@ -29,11 +29,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('authentication.urls')),  # Authentication App Urls
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),  # Logout
-    path('', placeholder_view, name="home"),  # Home URL (/)
+    #path('', placeholder_view, name="home"),  # Home URL (/)
     path('scan-now/', placeholder_view, name="scan_now"),  # Scan now URL
-    path('news/', placeholder_view, name="news"),  # News URL
+    #path('news/', placeholder_view, name="news"),  # News URL
     path('scanner/', include('scanner.urls')),  # Scanner URLs /scanner/
     path('scan-ip-domain/', include('scan_ip_domain.urls')),  # App scan ip domain /scan-ip-domain/
+    path('integrity/', include('integrity.urls')),
+    path('', include('news.urls')), #News APP 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

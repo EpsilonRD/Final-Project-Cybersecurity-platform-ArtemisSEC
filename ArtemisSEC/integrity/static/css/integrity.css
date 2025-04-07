@@ -1,0 +1,293 @@
+/* integrity/static/css/integrity.css */
+
+/* Main Container */
+.integrity-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+/* History Panel */
+.history-panel {
+    width: 200px;
+    background-color: #0a2444;
+    padding: 10px;
+    height: calc(100vh - 80px);
+    position: sticky;
+    top: 80px;
+    overflow-y: auto;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    scrollbar-width: thin;
+    scrollbar-color: #0f3460 #16213e;
+}
+
+.history-panel:hover {
+    background-color: #0f3460;
+    width: 220px;
+}
+
+.history-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-panel::-webkit-scrollbar-track {
+    background: #16213e;
+    border-radius: 10px;
+}
+
+.history-panel::-webkit-scrollbar-thumb {
+    background: #0f3460;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.history-panel::-webkit-scrollbar-thumb:hover {
+    background: #00b3b3;
+}
+
+.history-panel h2 {
+    color: #00b3b3;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+/* History Items (placeholder) */
+.history-panel p {
+    color: #b0b0c0;
+    font-size: 14px;
+    margin: 0;
+    padding: 8px 0;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 20px;
+    background-color: #1a1a2e;
+    transition: opacity 0.3s ease;
+}
+
+.check-section {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px 0;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.check-section h1 {
+    color: #00b3b3;
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* Integrity Form */
+.integrity-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.integrity-form div {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.integrity-form label {
+    display: block;
+    font-size: 16px; /* Aumentado para mejor legibilidad */
+    color: #e0e0e0;
+    margin-bottom: 6px;
+    font-weight: 500; /* Peso medio para contraste */
+    text-align: left;
+}
+
+.integrity-form input,
+.integrity-form select {
+    width: 100%;
+    padding: 12px;
+    background-color: #16213e;
+    border: 1px solid #0f3460;
+    border-radius: 5px;
+    color: #f0f0f0; /* Color más claro para mejor contraste */
+    font-size: 16px; /* Aumentado para legibilidad */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.integrity-form input:focus,
+.integrity-form select:focus {
+    border-color: #00b3b3;
+    box-shadow: 0 0 8px rgba(0, 179, 179, 0.3);
+    outline: none;
+}
+
+.integrity-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00b3b3;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px; /* Aumentado para legibilidad */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 179, 179, 0.3);
+}
+
+.integrity-form button:hover {
+    background-color: #ff2e63;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(255, 46, 99, 0.3);
+}
+
+/* Integrity Results */
+#integrity-results {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin: 0 auto;
+}
+
+#integrity-results.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.result-container {
+    background-color: #16213e;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.result-container:hover {
+    transform: translateY(-5px);
+}
+
+.result-details {
+    padding: 15px;
+    background-color: #1a1a2e;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.result-details h3 {
+    color: #00b3b3;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.result-details pre {
+    color: #f0f0f0; /* Color más claro para legibilidad */
+    font-size: 16px; /* Aumentado para mejor lectura */
+    font-family: 'Roboto', monospace; /* Monospace para hashes */
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Enlace View Results */
+.view-results {
+    color: #00b3b3;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    transition: color 0.3s ease, transform 0.2s ease;
+    margin-top: 4px;
+}
+
+.view-results:hover {
+    color: #ff2e63;
+    transform: translateX(3px);
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .integrity-container {
+        flex-direction: column;
+    }
+
+    .history-panel {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+
+    .history-panel:hover {
+        width: 100%;
+    }
+
+    .check-section h1 {
+        font-size: 28px;
+    }
+
+    .integrity-form input,
+    .integrity-form select,
+    .integrity-form button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .check-section h1 {
+        font-size: 24px;
+    }
+
+    .integrity-form label {
+        font-size: 14px;
+    }
+
+    .integrity-form input,
+    .integrity-form select {
+        padding: 10px;
+    }
+
+    .integrity-form button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .result-details pre {
+        font-size: 14px;
+    }
+}

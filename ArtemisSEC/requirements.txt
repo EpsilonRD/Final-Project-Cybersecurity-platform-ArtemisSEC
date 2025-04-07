@@ -1,7 +1,8 @@
 #Requirements for run ArtemisSEC 
 Django 
 Requests 
-API Virus total v3 
-API Shodan 
-API AbuseIPDB 
-python-dotenv library 
+API-Virus-total-v3 
+API-Shodan 
+API-AbuseIPDB 
+python-dotenv-library 
+pillow-11.1.0
