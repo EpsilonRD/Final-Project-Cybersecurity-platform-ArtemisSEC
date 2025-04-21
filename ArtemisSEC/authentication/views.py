@@ -48,7 +48,7 @@ class UserLoginView(LoginView):
         return self.success_url
 
 class WelcomeView(TemplateView):
-    template_name = 'authentication/welcome.html'
+    template_name = 'news/home.html'
 
 @receiver(user_logged_in)
 def update_last_login(sender, request, user, **kwargs):
